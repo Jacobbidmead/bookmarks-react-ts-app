@@ -19,6 +19,7 @@ interface Link {
 const App:FC = () => {
 // Sets inital state of links to empty array
   const [links, setLinks] = useState<Link[]>([])
+ 
 
   // Function to change state of links
   const addLink = (url:string, text:string) => {
@@ -30,9 +31,11 @@ const App:FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.log('working')
     event.preventDefault()
-    const url = event.currentTarget.value;
-    const text = event.currentTarget.value;
+    const form = event.currentTarget;
+    const url = (form.elements.namedItem("url") as HTMLInputElement).value;
+    const text = (form.elements.namedItem("text") as HTMLInputElement).value;
     addLink(url, text)
+    console.log(url, text)
   }
 
 
@@ -42,9 +45,9 @@ const App:FC = () => {
     {/* input container */}
     <div>
       <form onSubmit={handleSubmit}>
-        <Input type="text" name="url" placeholder="Link"></Input>
-        <Input type="text" name="name" placeholder="Name" ></Input>
-        <Button>Click</Button>
+        <Input type="text" name="url" placeholder="Link"/>
+        <Input type="text" name="text" placeholder="Name"/ >
+        <Button type="submit">Click</Button>
       </form>
     </div>
     {/* input container */}
