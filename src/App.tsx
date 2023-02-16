@@ -30,8 +30,8 @@ const App:FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.log('working')
     event.preventDefault();
-    const url = event.currentTarget.url.value
-    const text = event.currentTarget.text.value
+    const url = event.currentTarget.value;
+    const text = event.currentTarget.value;
     addLink(url, text)
     event.currentTarget.reset()
   }
@@ -44,8 +44,8 @@ const App:FC = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <Input type="text" name="url" placeholder="Link"></Input>
-        <Input type="text" name="url" placeholder="Name" ></Input>
-        <button type="submit" >Click</button>
+        <Input type="text" name="name" placeholder="Name" ></Input>
+        <button  >Click</button>
       </form>
     </div>
     {/* input container */}
