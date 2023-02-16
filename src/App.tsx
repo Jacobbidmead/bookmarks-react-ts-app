@@ -26,6 +26,16 @@ const App:FC = () => {
     
     setLinks([...links, {url, text}])
 
+// sets the state back to original state - needs to be fixed
+
+
+    if (url === "" || text === "") {
+      setLinks([])
+    }
+
+
+    
+
    
   }
 
@@ -39,10 +49,7 @@ const App:FC = () => {
     addLink(url, text)
     event.currentTarget.reset();
 
-    if (url === "" || text === "") {
-      setLinks([])
-    }
-    
+  
   }
 
   // Create a function to remove link
