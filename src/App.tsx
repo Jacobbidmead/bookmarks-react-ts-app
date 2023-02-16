@@ -25,6 +25,15 @@ const App:FC = () => {
     setLinks([...links, {url, text}])
   }
 
+  // Create a function that changes the state of links
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const url = event.currentTarget.url.value
+    const text = event.currentTarget.text.value
+    addLink(url, text)
+    event.currentTarget.reset()
+  }
 
 
 
@@ -32,10 +41,10 @@ const App:FC = () => {
     <>
     {/* input container */}
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input type="text" name="url" placeholder="Link"></Input>
         <Input type="text" name="url" placeholder="Name" ></Input>
-        <Button>Click</Button>
+        <Button type="submit">Click</Button>
       </form>
     </div>
     {/* input container */}
