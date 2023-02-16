@@ -16,6 +16,16 @@ interface Link {
 }
 
 const App:FC = () => {
+// Sets inital state of links to empty array
+  const [links, setLinks] = useState<Link[]>([])
+
+  // Function to change state of links
+  const addLink = (url:string, text:string) => {
+    setLinks([...links, {url, text}])
+  }
+  
+
+
   return (
     <>
     {/* input container */}
