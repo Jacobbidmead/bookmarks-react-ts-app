@@ -1,5 +1,6 @@
 import React, {FC, useState} from "react";
 import styled from "styled-components";
+import {Button} from "./Components/Button.styled"
 
 const Input = styled.input`
   font-size: 18px;
@@ -23,7 +24,8 @@ const App:FC = () => {
   const addLink = (url:string, text:string) => {
     setLinks([...links, {url, text}])
   }
-  
+
+
 
 
   return (
@@ -31,12 +33,14 @@ const App:FC = () => {
     {/* input container */}
     <div>
       <form>
-        <Input></Input>
-        <Input></Input>
+        <Input type="text" name="url" placeholder="Link"></Input>
+        <Input type="text" name="url" placeholder="Name" ></Input>
+        <Button>Click</Button>
       </form>
     </div>
     {/* input container */}
     {/* results container */}
+    <div></div>
     {/* results container */}
   </>
   );
