@@ -29,11 +29,10 @@ const App:FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     console.log('working')
-    event.preventDefault();
+    event.preventDefault()
     const url = event.currentTarget.value;
     const text = event.currentTarget.value;
     addLink(url, text)
-    event.currentTarget.reset()
   }
 
 
@@ -45,13 +44,13 @@ const App:FC = () => {
       <form onSubmit={handleSubmit}>
         <Input type="text" name="url" placeholder="Link"></Input>
         <Input type="text" name="name" placeholder="Name" ></Input>
-        <button  >Click</button>
+        <Button>Click</Button>
       </form>
     </div>
     {/* input container */}
     {/* results container */}
     {/* Map links onclick */}
-{links.map((link, index) => (  <div><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a></div> ))}
+{links.map((link, index) => (  <div key={index} className="test"><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a></div> ))}
    
     {/* results container */}
   </>
