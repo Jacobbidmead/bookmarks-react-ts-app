@@ -46,6 +46,12 @@ const App:FC = () => {
     setLinks(newLinks);
   };
 
+  // Fucntion to clear all links
+
+  const clearLinks = () => {
+    setLinks([]);
+  };
+
 
 
   return (
@@ -57,13 +63,17 @@ const App:FC = () => {
         <Input type="text" name="text" placeholder="Name"/>
         <Button type="submit">Add bookmark</Button>
       </form>
+      
+     
     </div>
     {/* input container */}
     {/* results container */}
     {/* Map links onclick */}
-{links.map((link, index) => (  <div key={index} className="test"><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a><button onClick={() => removeLink(index)}>Remove</button></div> ))}
-   
+{links.map((link, index) => (  <div key={index}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a><button onClick={() => removeLink(index)}>Remove</button></div> ))}
+
     {/* results container */}
+
+    <div><Button onClick={clearLinks}>Clear all</Button></div>
   </>
   );
 }
