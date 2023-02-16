@@ -66,14 +66,15 @@ const App:FC = () => {
       
      
     </div>
-    {/* input container */}
+    {/* input container end*/}
     {/* results container */}
-    {/* Map links onclick */}
+    {/* Map links on form submit*/}
 {links.map((link, index) => (  <div key={index}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a><button onClick={() => removeLink(index)}>Remove</button></div> ))}
-
-    {/* results container */}
+    {/* results container end*/}
+    {/* clear button */}
 
     <div><Button onClick={clearLinks}>Clear all</Button></div>
+    {/* clear button end */}
   </>
   );
 }
