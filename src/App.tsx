@@ -61,7 +61,7 @@ const App:FC = () => {
     {/* input container */}
     {/* results container */}
     {/* Map links onclick */}
-{links.map((link, index) => (  <div key={index} className="test"><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a></div> ))}
+{links.map((link, index) => (  <div key={index} className="test"><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a><button onClick={() => removeLink(index)}>Remove</button></div> ))}
    
     {/* results container */}
   </>
