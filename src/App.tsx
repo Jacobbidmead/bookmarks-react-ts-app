@@ -10,6 +10,11 @@ const Input = styled.input`
   border-radius: 3px;
 `;
 
+interface Link {
+  url: string;
+  text:string;
+}
+
 const App:FC = () => {
   return (
     <>
