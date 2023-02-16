@@ -23,18 +23,15 @@ const App:FC = () => {
 
   // Function to change state of links
   const addLink = (url:string, text:string) => {
+    if (!url || !text) {
+      console.log('Url and Text fields are required');
+      return;
+    }
     
     setLinks([...links, {url, text}])
 
 // sets the state back to original state - needs to be fixed
 
-
-    if (url === "" || text === "") {
-      setLinks([])
-    }
-
-
-    
 
    
   }
@@ -61,7 +58,7 @@ const App:FC = () => {
     
   };
 
-  // Fucntion to clear all links
+  // Function to clear all links
 
   const clearLinks = () => {
     setLinks([]);
