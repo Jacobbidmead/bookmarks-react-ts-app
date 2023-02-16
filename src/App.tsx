@@ -28,6 +28,7 @@ const App:FC = () => {
   // Create a function that changes the state of links
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    console.log('working')
     event.preventDefault();
     const url = event.currentTarget.url.value
     const text = event.currentTarget.text.value
@@ -44,12 +45,14 @@ const App:FC = () => {
       <form onSubmit={handleSubmit}>
         <Input type="text" name="url" placeholder="Link"></Input>
         <Input type="text" name="url" placeholder="Name" ></Input>
-        <Button type="submit">Click</Button>
+        <button type="submit" >Click</button>
       </form>
     </div>
     {/* input container */}
     {/* results container */}
-    <div></div>
+    {/* Map links onclick */}
+{links.map((link, index) => (  <div><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a></div> ))}
+   
     {/* results container */}
   </>
   );
