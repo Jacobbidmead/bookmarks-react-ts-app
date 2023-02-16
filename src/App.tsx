@@ -38,6 +38,14 @@ const App:FC = () => {
     console.log(url, text)
   }
 
+  // Create a function to remove bookmark
+
+  const removeLink = (index: number) => {
+    const newLinks = [...links];
+    newLinks.splice(index, 1);
+    setLinks(newLinks);
+  };
+
 
 
   return (
@@ -45,9 +53,9 @@ const App:FC = () => {
     {/* input container */}
     <div>
       <form onSubmit={handleSubmit}>
-        <Input type="text" name="url" placeholder="Link"/>
-        <Input type="text" name="text" placeholder="Name"/ >
-        <Button type="submit">Click</Button>
+        <Input type="url" name="url" placeholder="Link"/>
+        <Input type="text" name="text" placeholder="Name"/>
+        <Button type="submit">Add bookmark</Button>
       </form>
     </div>
     {/* input container */}
