@@ -23,27 +23,35 @@ const App:FC = () => {
 
   // Function to change state of links
   const addLink = (url:string, text:string) => {
+    
     setLinks([...links, {url, text}])
+
+   
   }
 
   // Create a function that changes the state of links
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    console.log('working')
     event.preventDefault()
     const form = event.currentTarget;
     const url = (form.elements.namedItem("url") as HTMLInputElement).value;
     const text = (form.elements.namedItem("text") as HTMLInputElement).value;
     addLink(url, text)
-    console.log(url, text)
+    event.currentTarget.reset();
+
+    if (url === "" || text === "") {
+      setLinks([])
+    }
+    
   }
 
-  // Create a function to remove bookmark
+  // Create a function to remove link
 
   const removeLink = (index: number) => {
     const newLinks = [...links];
     newLinks.splice(index, 1);
     setLinks(newLinks);
+    
   };
 
   // Fucntion to clear all links
@@ -59,7 +67,7 @@ const App:FC = () => {
     {/* input container */}
     <div>
       <form onSubmit={handleSubmit}>
-        <Input type="url" name="url" placeholder="Link"/>
+        <Input type="url" name="url" placeholder="Link"></Input>
         <Input type="text" name="text" placeholder="Name"/>
         <Button type="submit">Add bookmark</Button>
       </form>
@@ -69,7 +77,10 @@ const App:FC = () => {
     {/* input container end*/}
     {/* results container */}
     {/* Map links on form submit*/}
+
+    
 {links.map((link, index) => (  <div key={index}><a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a><button onClick={() => removeLink(index)}>Remove</button></div> ))}
+
     {/* results container end*/}
     {/* clear button */}
 
