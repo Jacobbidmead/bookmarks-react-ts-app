@@ -9,11 +9,17 @@ only uses front-end technologies (ie no backend database)
 
 3.  Users can remove links and clear all.
 
+4.  Useer can edit urls and rename them.
+
+5.  The saved bookmarks persist with page reload
+
+6.  This app is not responsive at present due to time restraints
+
 To run locally,
 In the terminal, navigate to the project file after downloading and type:
 
 npm i
-This will install the necessary dependencies. After all files have downloaded, run the game by typing
+This will install the necessary dependencies. After all files have downloaded, run the app by typing
 
 npm start
 ctrl + c in Terminal to quit

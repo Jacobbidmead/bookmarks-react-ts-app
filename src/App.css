@@ -11,3 +11,8 @@ a {
   text-decoration: none;
   color: black;
 }
+
+::selection {
+  color: black;
+  background-color: lightpink;
+}

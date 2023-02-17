@@ -14,7 +14,14 @@ export const Grid = styled.div`
 export const Footer = styled.div`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 20px;
+  background-color: #ffdead;
+`;
+
+export const FooterButton = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 15px;
   background-color: #ffdead;
 `;
 

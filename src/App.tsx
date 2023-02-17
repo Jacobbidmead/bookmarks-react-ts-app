@@ -15,6 +15,7 @@ import {
   LinkGrid,
   Align,
   Blurb,
+  FooterButton,
 } from "./Components/Grid.styled";
 import { Links } from "./Components/Links.styled";
 import "./App.css";
@@ -154,8 +155,19 @@ const App: FC = () => {
           </div>
         </form>
         <Blurb>
-          Bookmarker by <a href="https://jacobbidmead.com/">Jacob Bidmead.</a>{" "}
-          <a href="https://github.com/Jacobbidmead/bookmarks-react-ts-app">
+          Bookmarker by{" "}
+          <a
+            href="https://jacobbidmead.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Jacob Bidmead.
+          </a>{" "}
+          <a
+            href="https://github.com/Jacobbidmead/bookmarks-react-ts-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {" "}
             Click for the GitHub Repo
           </a>
@@ -250,7 +262,7 @@ const App: FC = () => {
           onChange={handlePageChange}
         />
       </Footer>
-      <Footer>
+      <FooterButton>
         <div>
           <Button
             as={motion.button}
@@ -261,7 +273,7 @@ const App: FC = () => {
             Clear all
           </Button>
         </div>
-      </Footer>
+      </FooterButton>
       {/* Footer button end */}
     </>
   );
