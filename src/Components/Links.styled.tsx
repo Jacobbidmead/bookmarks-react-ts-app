@@ -3,5 +3,6 @@ import styled from "styled-components";
 export const Links = styled.div`
   display: grid;
   justify-content: center;
-  text-decoration: none;
+  font-size: 26px;
+  padding: 3px;
 `;

@@ -11,10 +11,15 @@ export const Grid = styled.div`
 export const Footer = styled.div`
   display: flex;
   justify-content: center;
-  padding: 40px;
+  padding: 30px;
 `;
 
 export const TopBar = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
+
+export const InputContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
 `;

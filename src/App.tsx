@@ -1,7 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
-import { Button } from "./Components/Button.styled";
+import { Edit } from "./Components/Input.styled";
+import { Button, Small } from "./Components/Button.styled";
 import { Footer, Grid, TopBar } from "./Components/Grid.styled";
 import { Links } from "./Components/Links.styled";
 import "./App.css";
@@ -117,7 +118,12 @@ const App: FC = () => {
               pattern="https?://.+"
               required
             ></Input>
-            <Input type="text" name="text" placeholder="Bookmark" />
+            <Input
+              type="text"
+              name="text"
+              placeholder="Bookmark"
+              maxLength={40}
+            />
           </div>
           <div
             style={{
@@ -149,38 +155,49 @@ const App: FC = () => {
             <Links key={index}>
               {editLinks === index ? (
                 <>
-                  <Input
-                    type="url"
-                    name="url"
-                    placeholder="Link"
-                    pattern="https?://.+"
-                    required
-                    value={editUrl}
-                    onChange={(e) => setEditUrl(e.target.value)}
-                  />
-                  <Input
-                    type="text"
-                    name="text"
-                    placeholder="Name"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                  />
-                  <Button
-                    as={motion.button}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => saveEdit(index)}
-                  >
-                    Save
-                  </Button>
+                  <div>
+                    <Edit
+                      type="url"
+                      name="url"
+                      placeholder="Link"
+                      pattern="https?://.+"
+                      required
+                      value={editUrl}
+                      onChange={(e) => setEditUrl(e.target.value)}
+                    />
+                    <Edit
+                      type="text"
+                      name="text"
+                      placeholder="Name"
+                      value={editText}
+                      onChange={(e) => setEditText(e.target.value)}
+                      maxLength={40}
+                    />
+                    <Small
+                      as={motion.button}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => saveEdit(index)}
+                    >
+                      Save
+                    </Small>
+                  </div>
                 </>
               ) : (
                 <>
-                  <a href={link.url} target="_blank" rel="noopener noreferrer">
-                    {link.text}
-                  </a>
-                  <button onClick={() => removeLink(index)}>Remove</button>
-                  <button onClick={() => handleEdit(index)}>Edit</button>
+                  <div>
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.text}
+                    </a>
+                    <div style={{ display: "inline-block" }}>
+                      <button onClick={() => removeLink(index)}>Remove</button>
+                      <button onClick={() => handleEdit(index)}>Edit</button>
+                    </div>
+                  </div>
                 </>
               )}
             </Links>

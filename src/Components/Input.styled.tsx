@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  placeholder: black;
   color: black;
   font-size: 25px;
   padding: 10px;
@@ -12,5 +11,17 @@ export const Input = styled.input`
     outline: none;
     border-color: none;
   }
+`;
+
+export const Edit = styled.input`
+  color: black;
+  font-size: 15px;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 40px;
+  border: 1px solid black;
+  &:focus {
+    outline: none;
+    border-color: none;
   }
 `;
