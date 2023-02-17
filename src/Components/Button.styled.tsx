@@ -37,6 +37,21 @@ export const Editbutton = styled.button`
   color: white;
   font-size: 10px;
   border: 1px solid black;
-  margin-left: 30px;
+  margin-left: 10px;
   border: 1px solid rgb(116, 254, 189);
+  padding-top: 2px;
+`;
+
+export const Deletebutton = styled.button`
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 7px;
+  border: 1px solid black;
+  margin-left: 100px;
+  border: 1px solid rgb(116, 254, 189);
+  margin-top: 0px;
 `;

@@ -2,8 +2,19 @@ import React, { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
 import { Edit } from "./Components/Input.styled";
-import { Button, Small, Editbutton } from "./Components/Button.styled";
-import { Footer, Grid, TopBar } from "./Components/Grid.styled";
+import {
+  Button,
+  Small,
+  Editbutton,
+  Deletebutton,
+} from "./Components/Button.styled";
+import {
+  Footer,
+  Grid,
+  TopBar,
+  LinkGrid,
+  Align,
+} from "./Components/Grid.styled";
 import { Links } from "./Components/Links.styled";
 import "./App.css";
 
@@ -57,7 +68,6 @@ const App: FC = () => {
     const url = (form.elements.namedItem("url") as HTMLInputElement).value;
     const text = (form.elements.namedItem("text") as HTMLInputElement).value;
     addLink(url, text);
-
     event.currentTarget.reset();
   };
 
@@ -142,6 +152,14 @@ const App: FC = () => {
             </Button>
           </div>
         </form>
+        <div>
+          Bookmarker by <a href="https://jacobbidmead.com/">Jacob Bidmead.</a>{" "}
+          <a href="https://github.com/Jacobbidmead/bookmarks-react-ts-app">
+            {" "}
+            Click here for the GitHub Repo
+          </a>
+          for this app.
+        </div>
       </TopBar>
 
       {/* input container end*/}
@@ -185,21 +203,26 @@ const App: FC = () => {
                 </>
               ) : (
                 <>
-                  <div>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.text}
-                    </a>
-                    <div style={{ display: "inline-block" }}>
-                      <button onClick={() => removeLink(index)}>Remove</button>
+                  <LinkGrid>
+                    <Align>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span>{link.text}</span>
+                      </a>
+                    </Align>
+
+                    <Align>
+                      <Deletebutton onClick={() => removeLink(index)}>
+                        Delete
+                      </Deletebutton>
                       <Editbutton onClick={() => handleEdit(index)}>
                         Edit
                       </Editbutton>
-                    </div>
-                  </div>
+                    </Align>
+                  </LinkGrid>
                 </>
               )}
             </Links>
@@ -207,7 +230,7 @@ const App: FC = () => {
 
         {/* saved bookmarks container end*/}
 
-        {/* clear button */}
+        {/* Footer button */}
       </Grid>
       <Footer>
         <Pagination
@@ -228,8 +251,7 @@ const App: FC = () => {
           </Button>
         </div>
       </Footer>
-
-      {/* clear button end */}
+      {/* Footer button end */}
     </>
   );
 };
