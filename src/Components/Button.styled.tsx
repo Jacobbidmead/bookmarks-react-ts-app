@@ -16,7 +16,7 @@ export const Button = styled.button`
 
 export const Small = styled.button`
   width: 150px;
-  height: 38px;
+  height: 32px;
   border-radius: 40px;
   cursor: pointer;
   background-image: linear-gradient(
@@ -29,8 +29,8 @@ export const Small = styled.button`
 `;
 
 export const Editbutton = styled.button`
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
   cursor: pointer;
   background-color: black;
@@ -43,8 +43,8 @@ export const Editbutton = styled.button`
 `;
 
 export const Deletebutton = styled.button`
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
   border-radius: 50%;
   cursor: pointer;
   background-color: black;

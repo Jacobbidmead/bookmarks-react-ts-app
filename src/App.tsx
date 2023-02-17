@@ -215,7 +215,7 @@ const App: FC = () => {
                       </a>
                     </Align>
 
-                    <Align>
+                    <div>
                       <Deletebutton
                         as={motion.button}
                         whileHover={{ scale: 1.1 }}
@@ -232,7 +232,7 @@ const App: FC = () => {
                       >
                         Edit
                       </Editbutton>
-                    </Align>
+                    </div>
                   </LinkGrid>
                 </>
               )}

@@ -15,9 +15,9 @@ export const Input = styled.input`
 
 export const Edit = styled.input`
   color: black;
-  font-size: 15px;
-  padding: 10px;
-  margin: 20px;
+  font-size: 12px;
+  padding: 8px;
+  margin: 8px;
   border-radius: 40px;
   border: 1px solid black;
   &:focus {
