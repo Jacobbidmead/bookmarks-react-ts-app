@@ -1,16 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
-import styled from "styled-components";
+import { Input } from "./Components/Input.styled";
 import { Button } from "./Components/Button.styled";
 import { Footer, Grid } from "./Components/Grid.styled";
 import { Pagination } from "@mui/material";
-const Input = styled.input`
-  font-size: 18px;
-  padding: 10px;
-  margin: 10px;
-  background: papayawhip;
-  border: none;
-  border-radius: 3px;
-`;
 
 interface Link {
   url: string;
