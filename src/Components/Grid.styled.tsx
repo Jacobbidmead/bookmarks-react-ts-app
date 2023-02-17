@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Grid = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   height: 100vh;
   background-color: #74ebd5;
   background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);

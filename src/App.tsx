@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
 import { Button } from "./Components/Button.styled";
 import { Footer, Grid, TopBar } from "./Components/Grid.styled";
+import { Links } from "./Components/Links.styled";
 import "./App.css";
 
 import { Pagination } from "@mui/material";
@@ -145,7 +146,7 @@ const App: FC = () => {
         {links
           .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
           .map((link, index) => (
-            <div key={index}>
+            <Links key={index}>
               {editLinks === index ? (
                 <>
                   <Input
@@ -182,7 +183,7 @@ const App: FC = () => {
                   <button onClick={() => handleEdit(index)}>Edit</button>
                 </>
               )}
-            </div>
+            </Links>
           ))}
 
         {/* saved bookmarks container end*/}

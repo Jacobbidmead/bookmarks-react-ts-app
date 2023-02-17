@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Links = styled.div`
-  display: flex;
+  display: grid;
   justify-content: center;
-  height: 100vh;
+  text-decoration: none;
 `;
