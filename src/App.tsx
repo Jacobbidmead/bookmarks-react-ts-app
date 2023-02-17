@@ -1,4 +1,4 @@
-import React, {FC, useState} from "react";
+import React, {FC, useState, useEffect} from "react";
 import styled from "styled-components";
 import {Button} from "./Components/Button.styled"
 
@@ -19,7 +19,7 @@ interface Link {
 const App:FC = () => {
 
 // Sets inital state of links to empty array
-  const [links, setLinks] = useState<Link[]>([])
+  const [links, setLinks] = useState<Link[]>(  () => JSON.parse(localStorage.getItem("links") || "[]"))
 
 // Sets initial state for the edit links functionality 
 const [editLinks, setEditLinks] = useState(-1);
@@ -78,12 +78,22 @@ const [editText, setEditText] = useState("");
     setEditText(links[index].text)
   };
   
+
+  // Function that saves the new state of links
+
   const saveEdit = (index: number) => {
     const newLinks = [...links];
     newLinks[index] = { url: editUrl, text: editText };
     setLinks(newLinks);
     setEditLinks(-1);
   };
+
+
+    // Save the links array to local storage whenever it changes
+    useEffect(() => {
+      localStorage.setItem("links", JSON.stringify(links));
+    }, [links]);
+  
  
 
   return (
