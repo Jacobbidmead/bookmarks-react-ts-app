@@ -1,6 +1,7 @@
 import React, {FC, useState, useEffect} from "react";
 import styled from "styled-components";
 import {Button} from "./Components/Button.styled"
+import AppPagination from "./Components/Pagination";
 
 const Input = styled.input`
   font-size: 18px;
@@ -19,17 +20,20 @@ interface Link {
 const App:FC = () => {
 
 // Sets inital state of links to empty array
-  const [links, setLinks] = useState<Link[]>(  () => JSON.parse(localStorage.getItem("links") || "[]"))
+const [links, setLinks] = useState<Link[]>(  () => JSON.parse(localStorage.getItem("links") || "[]"))
 
 // Sets initial state for the edit links functionality 
 const [editLinks, setEditLinks] = useState(-1);
 const [editUrl, setEditUrl] = useState("");
 const [editText, setEditText] = useState("");
+
+
+// Sets inital state, the amount of links per page
+const [postsPerPage, setPostsPerPag] = useState(20)
   
  
 
   // Function to change state of links
-
   const addLink = (url:string, text:string) => {
     if (!url || !text) {
       console.log('Url and Text fields are required');
@@ -41,8 +45,7 @@ const [editText, setEditText] = useState("");
 
 
 
-  // Create a function that changes the state of links
-
+  // Function that changes the state of links from input value
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const form = event.currentTarget;
@@ -56,7 +59,6 @@ const [editText, setEditText] = useState("");
 
 
   // Create a function to remove link
-
   const removeLink = (index: number) => {
     const newLinks = [...links];
     newLinks.splice(index, 1);
@@ -64,14 +66,12 @@ const [editText, setEditText] = useState("");
   };
 
   // Function to clear all links
-
   const clearLinks = () => {
     setLinks([]);
   };
 
 
   // Function to edit links
-
   const handleEdit = (index: any) => {
     setEditLinks(index);
     setEditUrl(links[index].url);
@@ -80,7 +80,6 @@ const [editText, setEditText] = useState("");
   
 
   // Function that saves the new state of links
-
   const saveEdit = (index: number) => {
     const newLinks = [...links];
     newLinks[index] = { url: editUrl, text: editText };
@@ -89,7 +88,7 @@ const [editText, setEditText] = useState("");
   };
 
 
-    // Save the links array to local storage whenever it changes
+    // Save the links array to local storage 
     useEffect(() => {
       localStorage.setItem("links", JSON.stringify(links));
     }, [links]);
@@ -105,14 +104,12 @@ const [editText, setEditText] = useState("");
         <Input type="text" name="text" placeholder="Name"/>
         <Button type="submit">Add bookmark</Button>
       </form>
-      
-     
     </div>
     {/* input container end*/}
-    {/* results container */}
-    {/* Map links on form submit*/}
 
-    
+
+    {/* saved bookmarks container */}
+    {/* Map links on form submit, show new input to edit links when handleEdit is called, otherwise show saved link, remove & edit buttons*/}
       {links.map((link, index) => (
         <div key={index}>
           {editLinks === index ? (
@@ -143,10 +140,12 @@ const [editText, setEditText] = useState("");
         </div>
       ))}
 
-    {/* results container end*/}
-    {/* clear button */}
+    {/* saved bookmarks container end*/}
 
+
+    {/* clear button */}
 <div><Button onClick={clearLinks}>Clear all</Button></div>
+<AppPagination/>
     {/* clear button end */}
   </>
   );
