@@ -23,8 +23,8 @@ const App:FC = () => {
 
 // Sets initial state for the edit links functionality 
 const [editLinks, setEditLinks] = useState(-1);
-const [url, setUrl] = useState("");
-const [text, setText] = useState("");
+const [editUrl, setEditUrl] = useState("");
+const [editText, setEditText] = useState("");
   
  
 
@@ -73,19 +73,16 @@ const [text, setText] = useState("");
   // Function to edit links
 
   const handleEdit = (index: any) => {
-    const link = links[index];
-  setEditLinks(index);
-  setUrl(link.url);
-  setText(link.text);
+    setEditLinks(index);
+    setEditUrl(links[index].url);
+    setEditText(links[index].text)
   };
   
-  const saveEdit = (index: number, url: string, text: string) => {
+  const saveEdit = (index: number) => {
     const newLinks = [...links];
-  newLinks[index] = { url, text };
-  setLinks(newLinks);
-  setEditLinks(-1);
-  setUrl("");
-  setText("");
+    newLinks[index] = { url: editUrl, text: editText };
+    setLinks(newLinks);
+    setEditLinks(-1);
   };
  
 
@@ -106,25 +103,27 @@ const [text, setText] = useState("");
     {/* Map links on form submit*/}
 
     
-    {links.map((link, index) => (
+      {links.map((link, index) => (
         <div key={index}>
           {editLinks === index ? (
             <>
               <Input
-                type="url"
-                name="url"
-                placeholder="Link"
-                defaultValue={link.url}
-              ></Input>
-              <Input
-                type="text"
-                name="text"
-                placeholder="Name"
-                defaultValue={link.text}
-              ></Input>
-              <Button onClick={() => saveEdit(index, link.url, link.text)}>Save</Button>
-            </>
-          ) : (
+                  type="url"
+                  name="url"
+                  placeholder="Link"
+                  value={editUrl}
+                  onChange={(e) => setEditUrl(e.target.value)}
+                />
+                <Input
+                  type="text"
+                  name="text"
+                  placeholder="Name"
+                  value={editText}
+                  onChange={(e) => setEditText(e.target.value)}
+                />
+                <Button onClick={() => saveEdit(index)}>Save</Button>
+              </>
+            ) : (
             <>
               <a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a>
               <button onClick={() => removeLink(index)}>Remove</button> 
