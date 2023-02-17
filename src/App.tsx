@@ -1,7 +1,9 @@
 import React, { FC, useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
 import { Button } from "./Components/Button.styled";
-import { Footer, Grid } from "./Components/Grid.styled";
+import { Footer, Grid, TopBar } from "./Components/Grid.styled";
+
 import { Pagination } from "@mui/material";
 
 interface Link {
@@ -103,7 +105,7 @@ const App: FC = () => {
   return (
     <>
       {/* input container */}
-      <div>
+      <TopBar>
         <form onSubmit={handleSubmit}>
           <Input
             type="url"
@@ -113,9 +115,18 @@ const App: FC = () => {
             required
           ></Input>
           <Input type="text" name="text" placeholder="Name" />
-          <Button type="submit">Add bookmark</Button>
+
+          <Button
+            as={motion.button}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+          >
+            Add bookmark
+          </Button>
         </form>
-      </div>
+      </TopBar>
+
       {/* input container end*/}
 
       {/* saved bookmarks container */}
@@ -143,7 +154,14 @@ const App: FC = () => {
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
                   />
-                  <Button onClick={() => saveEdit(index)}>Save</Button>
+                  <Button
+                    as={motion.button}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => saveEdit(index)}
+                  >
+                    Save
+                  </Button>
                 </>
               ) : (
                 <>
@@ -162,17 +180,25 @@ const App: FC = () => {
         {/* clear button */}
       </Grid>
       <Footer>
-        <div>
-          <Button onClick={clearLinks}>Clear all</Button>
-        </div>
-      </Footer>
-      <Footer>
         <Pagination
           count={totalPages}
           page={currentPage}
           onChange={handlePageChange}
         />
       </Footer>
+      <Footer>
+        <div>
+          <Button
+            as={motion.button}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={clearLinks}
+          >
+            Clear all
+          </Button>
+        </div>
+      </Footer>
+
       {/* clear button end */}
     </>
   );

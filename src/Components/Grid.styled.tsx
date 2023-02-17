@@ -11,3 +11,8 @@ export const Footer = styled.div`
   justify-content: center;
   padding: 40px;
 `;
+
+export const TopBar = styled.div`
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+`;
