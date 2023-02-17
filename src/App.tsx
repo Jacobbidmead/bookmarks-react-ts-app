@@ -1,8 +1,8 @@
 import React, { FC, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Button } from "./Components/Button.styled";
+import { Footer, Grid } from "./Components/Grid.styled";
 import { Pagination } from "@mui/material";
-
 const Input = styled.input`
   font-size: 18px;
   padding: 10px;
@@ -128,53 +128,59 @@ const App: FC = () => {
 
       {/* saved bookmarks container */}
       {/* Map links on form submit, show new input to edit links when handleEdit is called, otherwise show saved link, remove & edit buttons*/}
-      {links
-        .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
-        .map((link, index) => (
-          <div key={index}>
-            {editLinks === index ? (
-              <>
-                <Input
-                  type="url"
-                  name="url"
-                  placeholder="Link"
-                  pattern="https?://.+"
-                  required
-                  value={editUrl}
-                  onChange={(e) => setEditUrl(e.target.value)}
-                />
-                <Input
-                  type="text"
-                  name="text"
-                  placeholder="Name"
-                  value={editText}
-                  onChange={(e) => setEditText(e.target.value)}
-                />
-                <Button onClick={() => saveEdit(index)}>Save</Button>
-              </>
-            ) : (
-              <>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.text}
-                </a>
-                <button onClick={() => removeLink(index)}>Remove</button>
-                <button onClick={() => handleEdit(index)}>Edit</button>
-              </>
-            )}
-          </div>
-        ))}
+      <Grid>
+        {links
+          .slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage)
+          .map((link, index) => (
+            <div key={index}>
+              {editLinks === index ? (
+                <>
+                  <Input
+                    type="url"
+                    name="url"
+                    placeholder="Link"
+                    pattern="https?://.+"
+                    required
+                    value={editUrl}
+                    onChange={(e) => setEditUrl(e.target.value)}
+                  />
+                  <Input
+                    type="text"
+                    name="text"
+                    placeholder="Name"
+                    value={editText}
+                    onChange={(e) => setEditText(e.target.value)}
+                  />
+                  <Button onClick={() => saveEdit(index)}>Save</Button>
+                </>
+              ) : (
+                <>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.text}
+                  </a>
+                  <button onClick={() => removeLink(index)}>Remove</button>
+                  <button onClick={() => handleEdit(index)}>Edit</button>
+                </>
+              )}
+            </div>
+          ))}
 
-      {/* saved bookmarks container end*/}
+        {/* saved bookmarks container end*/}
 
-      {/* clear button */}
-      <div>
-        <Button onClick={clearLinks}>Clear all</Button>
-      </div>
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={handlePageChange}
-      />
+        {/* clear button */}
+      </Grid>
+      <Footer>
+        <div>
+          <Button onClick={clearLinks}>Clear all</Button>
+        </div>
+      </Footer>
+      <Footer>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+        />
+      </Footer>
       {/* clear button end */}
     </>
   );
