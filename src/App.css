@@ -1,1 +1,8 @@
+@font-face {
+  font-family: "PolySans";
+  src: url("/public/fonts/PolySans.woff");
+}
 
+* {
+  font-family: PolySans, sans-serif;
+}

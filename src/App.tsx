@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
 import { Button } from "./Components/Button.styled";
 import { Footer, Grid, TopBar } from "./Components/Grid.styled";
+import "./App.css";
 
 import { Pagination } from "@mui/material";
 
@@ -107,23 +108,32 @@ const App: FC = () => {
       {/* input container */}
       <TopBar>
         <form onSubmit={handleSubmit}>
-          <Input
-            type="url"
-            name="url"
-            placeholder="Link"
-            pattern="https?://.+"
-            required
-          ></Input>
-          <Input type="text" name="text" placeholder="Name" />
-
-          <Button
-            as={motion.button}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            type="submit"
+          <div>
+            <Input
+              type="url"
+              name="url"
+              placeholder="URL"
+              pattern="https?://.+"
+              required
+            ></Input>
+            <Input type="text" name="text" placeholder="Bookmark" />
+          </div>
+          <div
+            style={{
+              marginLeft: "90px",
+              paddingBottom: "50px",
+              paddingTop: "20px",
+            }}
           >
-            Add bookmark
-          </Button>
+            <Button
+              as={motion.button}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              type="submit"
+            >
+              Add bookmark
+            </Button>
+          </div>
         </form>
       </TopBar>
 

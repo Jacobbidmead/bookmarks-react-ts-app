@@ -4,6 +4,8 @@ export const Grid = styled.div`
   display: flex;
   justify-content: center;
   height: 100vh;
+  background-color: #74ebd5;
+  background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
 `;
 
 export const Footer = styled.div`
@@ -14,5 +16,5 @@ export const Footer = styled.div`
 
 export const TopBar = styled.div`
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 `;
