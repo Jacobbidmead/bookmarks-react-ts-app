@@ -22,7 +22,9 @@ const App:FC = () => {
   const [links, setLinks] = useState<Link[]>([])
 
 // Sets initial state for the edit links functionality 
-  const [editLinks, setEditLinks] = useState<number | null>(null);
+const [editLinks, setEditLinks] = useState(-1);
+const [url, setUrl] = useState("");
+const [text, setText] = useState("");
   
  
 
@@ -47,22 +49,6 @@ const App:FC = () => {
     const url = (form.elements.namedItem("url") as HTMLInputElement).value;
     const text = (form.elements.namedItem("text") as HTMLInputElement).value;
     addLink(url, text)
-
-
-
-    if (editLinks !== null) {
-      // If the editLinks state is not null, it means we're in edit mode
-      // So we update the corresponding link instead of adding a new one
-      const newLinks = [...links];
-      newLinks[editLinks].url = url;
-      newLinks[editLinks].text = text;
-      setLinks(newLinks);
-      setEditLinks(null);
-    } else {
-      // Otherwise, we're in add mode, so we add the new link
-      addLink(url, text);
-    }
-
     
     event.currentTarget.reset();
   }
@@ -84,15 +70,23 @@ const App:FC = () => {
   };
 
 
+  // Function to edit links
 
-
-// Function to save edited link
-const saveEdit = (index: number, url: string, text: string) => {
-  const newLinks = [...links];
+  const handleEdit = (index: any) => {
+    const link = links[index];
+  setEditLinks(index);
+  setUrl(link.url);
+  setText(link.text);
+  };
+  
+  const saveEdit = (index: number, url: string, text: string) => {
+    const newLinks = [...links];
   newLinks[index] = { url, text };
   setLinks(newLinks);
   setEditLinks(-1);
-};
+  setUrl("");
+  setText("");
+  };
  
 
   return (
@@ -112,11 +106,33 @@ const saveEdit = (index: number, url: string, text: string) => {
     {/* Map links on form submit*/}
 
     
-{links.map((link, index) => (  
-<div key={index}>
-<a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a>
-<button onClick={() => removeLink(index)}>Remove</button> 
-<button >Edit</button></div> ))}
+    {links.map((link, index) => (
+        <div key={index}>
+          {editLinks === index ? (
+            <>
+              <Input
+                type="url"
+                name="url"
+                placeholder="Link"
+                defaultValue={link.url}
+              ></Input>
+              <Input
+                type="text"
+                name="text"
+                placeholder="Name"
+                defaultValue={link.text}
+              ></Input>
+              <Button onClick={() => saveEdit(index, link.url, link.text)}>Save</Button>
+            </>
+          ) : (
+            <>
+              <a href={link.url} target="_blank" rel="noopener noreferrer">{link.text}</a>
+              <button onClick={() => removeLink(index)}>Remove</button> 
+              <button onClick={() => handleEdit(index)}>Edit</button>
+            </>
+          )}
+        </div>
+      ))}
 
     {/* results container end*/}
     {/* clear button */}
