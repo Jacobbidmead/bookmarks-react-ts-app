@@ -14,6 +14,7 @@ import {
   TopBar,
   LinkGrid,
   Align,
+  Blurb,
 } from "./Components/Grid.styled";
 import { Links } from "./Components/Links.styled";
 import "./App.css";
@@ -152,14 +153,14 @@ const App: FC = () => {
             </Button>
           </div>
         </form>
-        <div>
+        <Blurb>
           Bookmarker by <a href="https://jacobbidmead.com/">Jacob Bidmead.</a>{" "}
           <a href="https://github.com/Jacobbidmead/bookmarks-react-ts-app">
             {" "}
-            Click here for the GitHub Repo
+            Click for the GitHub Repo
           </a>
           for this app.
-        </div>
+        </Blurb>
       </TopBar>
 
       {/* input container end*/}
@@ -215,10 +216,20 @@ const App: FC = () => {
                     </Align>
 
                     <Align>
-                      <Deletebutton onClick={() => removeLink(index)}>
+                      <Deletebutton
+                        as={motion.button}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => removeLink(index)}
+                      >
                         Delete
                       </Deletebutton>
-                      <Editbutton onClick={() => handleEdit(index)}>
+                      <Editbutton
+                        as={motion.button}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        onClick={() => handleEdit(index)}
+                      >
                         Edit
                       </Editbutton>
                     </Align>
