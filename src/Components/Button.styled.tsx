@@ -27,3 +27,16 @@ export const Small = styled.button`
   );
   border: 1px solid black;
 `;
+
+export const Editbutton = styled.button`
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  border: 1px solid black;
+  margin-left: 30px;
+  border: 1px solid rgb(116, 254, 189);
+`;

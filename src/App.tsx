@@ -2,7 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Input } from "./Components/Input.styled";
 import { Edit } from "./Components/Input.styled";
-import { Button, Small } from "./Components/Button.styled";
+import { Button, Small, Editbutton } from "./Components/Button.styled";
 import { Footer, Grid, TopBar } from "./Components/Grid.styled";
 import { Links } from "./Components/Links.styled";
 import "./App.css";
@@ -195,7 +195,9 @@ const App: FC = () => {
                     </a>
                     <div style={{ display: "inline-block" }}>
                       <button onClick={() => removeLink(index)}>Remove</button>
-                      <button onClick={() => handleEdit(index)}>Edit</button>
+                      <Editbutton onClick={() => handleEdit(index)}>
+                        Edit
+                      </Editbutton>
                     </div>
                   </div>
                 </>
